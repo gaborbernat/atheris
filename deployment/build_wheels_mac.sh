@@ -45,3 +45,4 @@ python3.9.x86 setup.py bdist_wheel -d ./dist
 python3.9 setup.py bdist_wheel -d ./dist
 python3.10 setup.py bdist_wheel -d ./dist
 python3.11 setup.py bdist_wheel -d ./dist
+python3.15 setup.py bdist_wheel -d ./dist

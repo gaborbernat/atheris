@@ -23,6 +23,7 @@ message before it manifests as a confusing crash in instrument_bytecode.
 import dis
 import opcode
 import unittest
+from collections.abc import Mapping
 
 from atheris import version_dependent as vd
 
@@ -81,7 +82,7 @@ class VersionDependentTest(unittest.TestCase):
 
   def test_cache_count_matches_interpreter(self):
     expected = getattr(opcode, "_inline_cache_entries", {})
-    if not isinstance(expected, dict):
+    if not isinstance(expected, Mapping):
       # 3.11/3.12 expose this as a list indexed by opcode.
       expected = {
           dis.opname[i]: n for i, n in enumerate(expected) if n

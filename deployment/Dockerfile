@@ -39,7 +39,8 @@ RUN set -e -x -v; \
 RUN set -e -x -v; \
     /opt/python/cp312-cp312/bin/python3 -m pip install setuptools && \
     /opt/python/cp313-cp313/bin/python3 -m pip install setuptools && \
-    /opt/python/cp314-cp314/bin/python3 -m pip install setuptools;
+    /opt/python/cp314-cp314/bin/python3 -m pip install setuptools && \
+    /opt/python/cp315-cp315/bin/python3 -m pip install setuptools;
 
 WORKDIR /atheris
 
@@ -47,5 +48,6 @@ CMD export LIBFUZZER_LIB="/root/llvm-project/build/lib/clang/$(ls /root/llvm-pro
 	/opt/python/cp312-cp312/bin/python3 setup.py bdist_wheel -d /tmp/dist && \
 	/opt/python/cp313-cp313/bin/python3 setup.py bdist_wheel -d /tmp/dist && \
 	/opt/python/cp314-cp314/bin/python3 setup.py bdist_wheel -d /tmp/dist && \
+	/opt/python/cp315-cp315/bin/python3 setup.py bdist_wheel -d /tmp/dist && \
 	( cd /tmp/dist && find /tmp/dist/* | xargs -I{} /opt/python/cp313-cp313/bin/python3 -m auditwheel repair --plat manylinux2014_x86_64 {} ) && \
 	mkdir -p /atheris/dist && cp /tmp/dist/wheelhouse/* /atheris/dist/
